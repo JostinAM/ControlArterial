@@ -11,6 +11,7 @@ import com.example.controlarterial.adapter.TomaArterialAdapter
 import com.example.controlarterial.dao.TomaArterialDAO
 import com.example.controlarterial.databinding.FragmentFirstBinding
 import com.example.controlarterial.entity.TomaArterial
+import com.example.controlarterial.entity.TomasArteriales
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -67,7 +68,7 @@ class FirstFragment : Fragment() {
 
         val client = OkHttpClient
             .Builder()
-            .addInterceptor(AuthInterceptor("eRDQk_2JGAaYIyTfQADfuZQDfN9xBM0XGFtI5n1Tq5-RKe_q_g"))
+            .addInterceptor(AuthInterceptor("ezPnykXgMF2mvQTyfZt2SMQhfbVVHpzVZkmSH7qXhcynO-28rg"))
             .addInterceptor(interceptor)
             .build()
 
@@ -93,14 +94,21 @@ class FirstFragment : Fragment() {
 
         listView.adapter = adapter
 
+
+
         GlobalScope.launch(Dispatchers.IO) {
             var salida = gson.toJson(item)
             print(salida)
             
-            val createdItem = apiService.createItem(items)
+            //val createdItem = apiService.createItem(items)
+
+           val arteriales = apiService.getItems()
+
+            print(arteriales)
 
             withContext(Dispatchers.Main) {
                 // Procesar la respuesta del API
+
             }
         }
 

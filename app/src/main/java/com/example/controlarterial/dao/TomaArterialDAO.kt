@@ -5,18 +5,18 @@ import com.example.controlarterial.entity.TomasArteriales
 import retrofit2.http.*
 
 interface TomaArterialDAO {
-    @GET("items")
-    suspend fun getItems(): List<TomaArterial>
+    @GET("tomasArteriales")
+    suspend fun getItems(): TomasArteriales
 
-    @GET("items/{uuid}")
+    @GET("tomasArteriales/{uuid}")
     suspend fun getItem(@Path("uuid") uuid: String): TomaArterial
 
-    @POST("items")
+    @POST("tomasArteriales")
     suspend fun createItem( @Body items: List<TomaArterial>): TomasArteriales
 
-    @PUT("items/{uuid}")
+    @PUT("tomasArteriales/{uuid}")
     suspend fun updateItem(@Path("uuid") uuid: String, @Body item: TomaArterial): TomaArterial
 
-    @DELETE("items/{uuid}")
+    @DELETE("tomasArteriales/{uuid}")
     suspend fun deleteItem(@Path("uuid") uuid: String)
 }
