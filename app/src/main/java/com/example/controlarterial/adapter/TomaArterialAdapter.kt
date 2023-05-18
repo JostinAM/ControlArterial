@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
-import com.example.controlarterial.entity.TomaArterial
 import com.example.controlarterial.R
+import com.example.controlarterial.entity.TomaArterial
 
 class TomaArterialAdapter(context: Context, tomasArteriales: List<TomaArterial>):
     ArrayAdapter<TomaArterial>(context, 0, tomasArteriales) {
@@ -20,13 +20,13 @@ class TomaArterialAdapter(context: Context, tomasArteriales: List<TomaArterial>)
 
         val tomaArterial = getItem(position)
 
+        val sistolicaTextView = view!!.findViewById<TextView>(R.id.sistolica)
         val distolicaTextView = view!!.findViewById<TextView>(R.id.distolica)
-        val sistolicaTextView = view.findViewById<TextView>(R.id.sistolica)
-        val ritmoTextView = view.findViewById<TextView>(R.id.ritmo)
+        val ritmoTextView = view!!.findViewById<TextView>(R.id.ritmo)
 
         distolicaTextView.text = tomaArterial!!.distolica.toString()
-        sistolicaTextView.text = tomaArterial.sistolica.toString()
-        ritmoTextView.text = tomaArterial.ritmo.toString()
+        sistolicaTextView.text = tomaArterial!!.sistolica.toString()
+        ritmoTextView.text = tomaArterial!!.ritmo.toString()
 
         return view
     }

@@ -1,21 +1,28 @@
 package com.example.controlarterial
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
 import com.example.controlarterial.databinding.ActivityMainBinding
+import com.example.controlarterial.viewModel.TomaArterialViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+
+    //MVVM
+
+    private lateinit var tomaArterialViewModel: TomaArterialViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -35,6 +42,10 @@ class MainActivity : AppCompatActivity() {
                 .setAnchorView(R.id.fab)
                 .setAction("Action", null).show()
         }
+
+        //INIT VIEW MODEL
+
+        var tomaArterialViewModel = ViewModelProvider(this).get(TomaArterialViewModel::class.java)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
